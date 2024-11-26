@@ -19,14 +19,14 @@ public class Server {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))
         ) {
-            // Читаем запрос от клиента
+
             String input = reader.readLine();
             System.out.println("Received from client: " + input);
 
-            // Выполняем вычисления
+
             String response = calculate(input);
 
-            // Отправляем результат клиенту
+
             writer.write(response);
             writer.newLine();
             writer.flush();
@@ -41,7 +41,7 @@ public class Server {
                 double num1 = Double.parseDouble(input.substring(0, input.indexOf('+')));
                 char operator = input.charAt(input.indexOf('+'));
                 double num2 = Double.parseDouble(input.substring(input.indexOf('+') + 1));
-                // Можно добавлять другие операторы, например, '-', '*', '/'
+
                 return performOperation(num1, operator, num2);
             } catch (NumberFormatException e) {
                 return "Error: Invalid number format";
